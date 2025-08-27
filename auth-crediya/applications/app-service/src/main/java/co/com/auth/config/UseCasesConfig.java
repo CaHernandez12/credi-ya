@@ -1,0 +1,23 @@
+package co.com.auth.config;
+
+import co.com.auth.model.user.gateways.UserGateway;
+import co.com.auth.usecase.user.UserUseCase;
+import co.com.auth.usecase.user.UserUseCaseService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+
+@Configuration
+@ComponentScan(basePackages = "co.com.auth.usecase",
+        includeFilters = {
+                @ComponentScan.Filter(type = FilterType.REGEX, pattern = "^.+UseCase$")
+        },
+        useDefaultFilters = false)
+public class UseCasesConfig {
+
+//        @Bean
+//        public UserUseCaseService userUseCase(UserGateway userGateway) {
+//                return new UserUseCase(userGateway);
+//        }
+}

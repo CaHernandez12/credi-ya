@@ -1,0 +1,32 @@
+pluginManagement {
+    repositories {
+        //mavenLocal()
+        //maven { url = '...' }
+        gradlePluginPortal()
+    }
+}
+
+buildCache {
+    local {
+        directory = new File(rootDir, 'build-cache')
+    }
+}
+
+rootProject.name = 'oncredit'
+
+include ':app-service'
+include ':model'
+include ':usecase'
+project(':app-service').projectDir = file('./applications/app-service')
+project(':model').projectDir = file('./domain/model')
+project(':usecase').projectDir = file('./domain/usecase')
+include ':r2dbc-postgresql'
+project(':r2dbc-postgresql').projectDir = file('./infrastructure/driven-adapters/r2dbc-postgresql')
+include ':reactive-web'
+project(':reactive-web').projectDir = file('./infrastructure/entry-points/reactive-web')
+include ':commons'
+project(':commons').projectDir = file('./infrastructure/helpers/commons')
+include ':businessconfiguration'
+project(':businessconfiguration').projectDir = file('./infrastructure/driven-adapters/businessconfiguration')
+include ':businessconfiguration'
+project(':businessconfiguration').projectDir = file('./infrastructure/entry-points/businessconfiguration')

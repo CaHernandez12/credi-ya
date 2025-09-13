@@ -1,0 +1,247 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LoanType</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">co.com.oncredit.model.loantype</a>
+</div>
+
+<h1>Coverage Summary for Class: LoanType (co.com.oncredit.model.loantype)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LoanType</td>
+<td class="coverageStat">
+  <span class="percent">
+    7,1%
+  </span>
+  <span class="absValue">
+    (1/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    7,1%
+  </span>
+  <span class="absValue">
+    (2/28)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LoanType$Builder</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    4,5%
+  </span>
+  <span class="absValue">
+    (1/22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4,8%
+  </span>
+  <span class="absValue">
+    (2/42)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package co.com.oncredit.model.loantype;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;
+&nbsp;public class LoanType {
+&nbsp;
+&nbsp;    private Long loanTypeId;
+&nbsp;    private String name;
+&nbsp;    private BigDecimal minAmount;
+&nbsp;    private BigDecimal maxAmount;
+&nbsp;    private BigDecimal interestRate;
+&nbsp;    private Boolean automaticValidation;
+&nbsp;
+<b class="fc">&nbsp;    public LoanType() {</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="nc">&nbsp;    private LoanType(Builder builder) {</b>
+<b class="nc">&nbsp;        this.loanTypeId = builder.loanTypeId;</b>
+<b class="nc">&nbsp;        this.name = builder.name;</b>
+<b class="nc">&nbsp;        this.minAmount = builder.minAmount;</b>
+<b class="nc">&nbsp;        this.maxAmount = builder.maxAmount;</b>
+<b class="nc">&nbsp;        this.interestRate = builder.interestRate;</b>
+<b class="nc">&nbsp;        this.automaticValidation = builder.automaticValidation;</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public Long getLoanTypeId() {
+<b class="nc">&nbsp;        return loanTypeId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLoanTypeId(Long loanTypeId) {
+<b class="nc">&nbsp;        this.loanTypeId = loanTypeId;</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public String getName() {
+<b class="nc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setName(String name) {
+<b class="nc">&nbsp;        this.name = name;</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public BigDecimal getMinAmount() {
+<b class="nc">&nbsp;        return minAmount;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMinAmount(BigDecimal minAmount) {
+<b class="nc">&nbsp;        this.minAmount = minAmount;</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public BigDecimal getMaxAmount() {
+<b class="nc">&nbsp;        return maxAmount;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMaxAmount(BigDecimal maxAmount) {
+<b class="nc">&nbsp;        this.maxAmount = maxAmount;</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public BigDecimal getInterestRate() {
+<b class="nc">&nbsp;        return interestRate;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setInterestRate(BigDecimal interestRate) {
+<b class="nc">&nbsp;        this.interestRate = interestRate;</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    public Boolean getAutomaticValidation() {
+<b class="nc">&nbsp;        return automaticValidation;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAutomaticValidation(Boolean automaticValidation) {
+<b class="nc">&nbsp;        this.automaticValidation = automaticValidation;</b>
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+<b class="nc">&nbsp;    public static class Builder {</b>
+&nbsp;        private Long loanTypeId;
+&nbsp;        private String name;
+&nbsp;        private BigDecimal minAmount;
+&nbsp;        private BigDecimal maxAmount;
+&nbsp;        private BigDecimal interestRate;
+&nbsp;        private Boolean automaticValidation;
+&nbsp;
+&nbsp;        public Builder loanTypeId(Long loanTypeId) {
+<b class="nc">&nbsp;            this.loanTypeId = loanTypeId;</b>
+<b class="nc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public Builder name(String name) {
+<b class="nc">&nbsp;            this.name = name;</b>
+<b class="nc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public Builder minAmount(BigDecimal minAmount) {
+<b class="nc">&nbsp;            this.minAmount = minAmount;</b>
+<b class="nc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public Builder maxAmount(BigDecimal maxAmount) {
+<b class="nc">&nbsp;            this.maxAmount = maxAmount;</b>
+<b class="nc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public Builder interestRate(BigDecimal interestRate) {
+<b class="nc">&nbsp;            this.interestRate = interestRate;</b>
+<b class="nc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public Builder automaticValidation(Boolean automaticValidation) {
+<b class="nc">&nbsp;            this.automaticValidation = automaticValidation;</b>
+<b class="nc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public LoanType build() {
+<b class="nc">&nbsp;            return new LoanType(this);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-09-03 17:45</div>
+</div>
+</body>
+</html>

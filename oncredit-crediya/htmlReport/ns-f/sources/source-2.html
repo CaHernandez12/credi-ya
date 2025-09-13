@@ -1,0 +1,100 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LoanTypeData</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">co.com.oncredit.r2dbc.adapter.loantype.data</a>
+</div>
+
+<h1>Coverage Summary for Class: LoanTypeData (co.com.oncredit.r2dbc.adapter.loantype.data)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">LoanTypeData</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package co.com.oncredit.r2dbc.adapter.loantype.data;
+&nbsp;
+&nbsp;import lombok.*;
+&nbsp;import org.springframework.data.annotation.Id;
+&nbsp;import org.springframework.data.relational.core.mapping.Column;
+&nbsp;import org.springframework.data.relational.core.mapping.Table;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;
+&nbsp;@Table(&quot;tbl_loan_type&quot;)
+&nbsp;@Builder
+&nbsp;@NoArgsConstructor
+&nbsp;@AllArgsConstructor
+&nbsp;@Getter
+&nbsp;@Setter
+&nbsp;public class LoanTypeData {
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @Column(&quot;loan_type_id&quot;)
+&nbsp;    private Long loanTypeId;
+&nbsp;    @Column(&quot;name&quot;)
+&nbsp;    private String name;
+&nbsp;    @Column(&quot;min_amount&quot;)
+&nbsp;    private BigDecimal minAmount;
+&nbsp;    @Column(&quot;max_amount&quot;)
+&nbsp;    private BigDecimal maxAmount;
+&nbsp;    @Column(&quot;interest_rate&quot;)
+&nbsp;    private BigDecimal interestRate;
+&nbsp;    @Column(&quot;automatic_validation&quot;)
+&nbsp;    private Boolean automaticValidation;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-09-03 17:45</div>
+</div>
+</body>
+</html>

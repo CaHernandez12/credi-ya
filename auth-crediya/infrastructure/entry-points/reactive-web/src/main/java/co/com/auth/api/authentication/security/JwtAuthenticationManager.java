@@ -1,18 +1,20 @@
-package co.com.auth.api.authentication;
+package co.com.auth.api.authentication.security;
 
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.util.Collections;
 
+@Component
 public class JwtAuthenticationManager implements ReactiveAuthenticationManager {
 
     private final JwtUtil jwtUtil;
 
-    public JwtAuthenticationManager(JwtUtil jwtUtil){
+    public JwtAuthenticationManager(JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
     }
 
@@ -20,14 +22,17 @@ public class JwtAuthenticationManager implements ReactiveAuthenticationManager {
     public Mono<Authentication> authenticate(Authentication authentication) {
         String token = authentication.getCredentials().toString();
 
-        try{
-            String email = jwtUtil.extractUsername(token);
+        try {
+            Long userId = jwtUtil.extractUserId(token);
             String rol = jwtUtil.extractRol(token);
-            return Mono.just(new UsernamePasswordAuthenticationToken(email, null,
-                    Collections.singletonList(
-                            new SimpleGrantedAuthority("ROLE_" + rol.toUpperCase()))
-            ));
-        } catch (Exception e){
+
+            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
+                    userId, // principal
+                    null,  // credentials
+                    Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + rol.toUpperCase()))
+            );
+            return Mono.just(auth);
+        } catch (Exception e) {
             return Mono.empty();
         }
     }

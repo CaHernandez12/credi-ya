@@ -16,8 +16,4 @@ import org.springframework.context.annotation.FilterType;
         useDefaultFilters = false)
 public class UseCasesConfig {
 
-//        @Bean
-//        public UserUseCaseService userUseCase(UserGateway userGateway) {
-//                return new UserUseCase(userGateway);
-//        }
 }

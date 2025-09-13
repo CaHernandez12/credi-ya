@@ -36,8 +36,18 @@ cors:
 entries:
   reactive-web:
     user: /api/v1/users
+    solicited: /api/v1/users/verifyid
+    auth:  /api/v1/login
 
 business-configuration:
-  minBaseSalary: 1500000
+  minBaseSalary: 15000000
 
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
 
+jwt:
+  secret: "my-super-secret-key-that-is-long-enough-1234567890"
+  expiration: 86400000

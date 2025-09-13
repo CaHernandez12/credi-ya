@@ -17,12 +17,14 @@ public class Mapper {
                 .documentType(user.getDocumentType())
                 .email(user.getEmail())
                 .baseSalary(user.getBaseSalary())
-
+                .roleId(user.getRoleId())
+                .password(user.getPassword())
                 .build();
     }
 
     public User toModel(UserData data) {
         return new User.Builder()
+                .userId(data.getUserId())
                 .name(data.getName())
                 .lastName(data.getLastName())
                 .birthDate(data.getBirthDate())
@@ -31,7 +33,9 @@ public class Mapper {
                 .documentNumber(data.getDocumentNumber())
                 .documentType(data.getDocumentType())
                 .email(data.getEmail())
+                .password(data.getPassword())
                 .baseSalary(data.getBaseSalary())
+                .roleId(data.getRoleId())
                 .build();
     }
 }

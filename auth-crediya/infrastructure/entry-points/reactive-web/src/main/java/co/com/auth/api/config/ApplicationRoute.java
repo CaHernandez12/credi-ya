@@ -15,4 +15,10 @@ public class ApplicationRoute {
     @NotBlank
     private String user;
 
+    @NotBlank
+    private String solicited;
+
+    @NotBlank
+    private String auth;
+
 }

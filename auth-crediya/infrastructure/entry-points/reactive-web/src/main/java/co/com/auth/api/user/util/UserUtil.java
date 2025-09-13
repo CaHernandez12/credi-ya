@@ -19,6 +19,8 @@ public class UserUtil {
                 .documentType(createUserDTO.getDocumentType())
                 .email(createUserDTO.getEmail())
                 .baseSalary(createUserDTO.getBaseSalary())
+                .password(createUserDTO.getPassword())
+                .roleId(createUserDTO.getRoleId())
                 .build();
         return Mono.just(user);
     }

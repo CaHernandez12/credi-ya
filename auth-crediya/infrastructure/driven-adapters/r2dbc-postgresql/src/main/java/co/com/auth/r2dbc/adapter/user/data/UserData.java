@@ -4,7 +4,6 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-@Transactional
+@ToString
 public class UserData {
 
     @Id
@@ -41,5 +40,9 @@ public class UserData {
     private String documentNumber;
     @Column("base_salary")
     private BigDecimal baseSalary;
+    @Column("password")
+    private String password;
+    @Column("role_id")
+    private Long roleId;
 
 }

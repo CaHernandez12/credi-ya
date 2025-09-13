@@ -14,9 +14,13 @@ public class User {
     private String documentNumber;
     private String documentType;
     private String email;
+    private String password;
     private BigDecimal baseSalary;
+    private Long roleId;
 
-    User(Builder builder) {
+    public User() {}
+
+    private User(Builder builder) {
         this.userId = builder.userId;
         this.name = builder.name;
         this.lastName = builder.lastName;
@@ -26,47 +30,105 @@ public class User {
         this.documentNumber = builder.documentNumber;
         this.documentType = builder.documentType;
         this.email = builder.email;
+        this.password = builder.password;
         this.baseSalary = builder.baseSalary;
+        this.roleId = builder.roleId;
     }
 
     public Long getUserId() {
         return userId;
     }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
     public BigDecimal getBaseSalary() {
         return baseSalary;
     }
 
-    public String getEmail() {
-        return email;
+    public void setBaseSalary(BigDecimal baseSalary) {
+        this.baseSalary = baseSalary;
     }
 
     public String getDocumentType() {
         return documentType;
     }
 
+    public void setDocumentType(String documentType) {
+        this.documentType = documentType;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getDocumentNumber() {
         return documentNumber;
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
     }
 
     public String getPhone() {
         return phone;
     }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getAddress() {
         return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public static class Builder {
@@ -81,6 +143,8 @@ public class User {
         private String documentType;
         private String email;
         private BigDecimal baseSalary;
+        private String password;
+        private Long roleId;
 
         public Builder userId(Long userId) {
             this.userId = userId;
@@ -132,8 +196,18 @@ public class User {
             return this;
         }
 
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder roleId(Long roleId) {
+            this.roleId = roleId;
+            return this;
+        }
+
         public User build() {
-           return new User(this);
+            return new User(this);
         }
 
     }

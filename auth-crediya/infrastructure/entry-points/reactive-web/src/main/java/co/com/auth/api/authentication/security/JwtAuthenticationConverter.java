@@ -1,4 +1,4 @@
-package co.com.auth.api.authentication;
+package co.com.auth.api.authentication.security;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,9 +17,8 @@ public class JwtAuthenticationConverter implements ServerAuthenticationConverter
 
         if (authHeader != null && authHeader.startsWith(BEARER_PREFIX)) {
             String token = authHeader.substring(BEARER_PREFIX.length());
-            return Mono.just(new UsernamePasswordAuthenticationToken(null, token));
+            return Mono.just(new UsernamePasswordAuthenticationToken("JWT_USER", token));
         }
-
         return Mono.empty();
     }
 }

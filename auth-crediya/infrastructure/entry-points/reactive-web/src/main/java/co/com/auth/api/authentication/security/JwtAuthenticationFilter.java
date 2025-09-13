@@ -1,4 +1,4 @@
-package co.com.auth.api.authentication;
+package co.com.auth.api.authentication.security;
 
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.ReactiveAuthenticationManagerResolver;

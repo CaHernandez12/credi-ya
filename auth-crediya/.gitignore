@@ -334,3 +334,6 @@ gradle-app.setting
 # -----
 *.hprof
 build-cache
+
+# Spring Boot configuration
+application.yaml

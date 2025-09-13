@@ -1,4 +1,4 @@
-package co.com.auth.api.authentication;
+package co.com.auth.api.authentication.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -19,12 +19,12 @@ public class JwtUtil {
         this.expiration = expiration;
     }
 
-    public String generateToken(String user, String rol) {
+    public String generateToken(Long userId, String role) {
         return Jwts.builder()
-                .subject(user)
+                .subject(String.valueOf(userId))
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expiration))
-                .claim("role", rol)
+                .claim("role", role)
                 .signWith(secretKey)
                 .compact();
 
@@ -37,6 +37,15 @@ public class JwtUtil {
                 .parseSignedClaims(token)
                 .getPayload()
                 .getSubject();
+    }
+
+    public Long extractUserId(String token){
+        return Long.valueOf(Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject());
     }
 
     public String extractRol(String token){

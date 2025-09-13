@@ -13,7 +13,8 @@ public enum TechnicalExceptionMessage {
     UNAUTHORIZED_ACCESS("TE-006", "Acceso no autorizado"),
     CONFIGURATION_NOT_FOUND("TE-007", "El configuracion de negocio no existe"),
     VALIDATION_FAILED("TE-008", "validacion fallida"),
-    ;
+    DOCUMENT_NOT_EXIST("TE-009", "el documento no existe"),
+    VALIDATION_LOGIN_FAILED("TE-010", "¡Ups!, algo ha fallado con el login");
 
     private final String code;
     private final String message;

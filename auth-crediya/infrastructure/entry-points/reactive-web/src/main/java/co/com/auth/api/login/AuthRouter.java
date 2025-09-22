@@ -1,8 +1,6 @@
-package co.com.auth.api.authentication;
+package co.com.auth.api.login;
 
 import co.com.auth.api.config.ApplicationRoute;
-import co.com.auth.api.config.JwtProperties;
-import co.com.auth.api.user.UserHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +19,6 @@ public class AuthRouter {
 
     @Bean
     public RouterFunction<ServerResponse> authFunction(AuthHandler authHandler) {
-        System.out.println("authFunction");
         return RouterFunctions.route().nest(accept(MediaType.APPLICATION_JSON),
                         builder -> builder
                                 .POST(route.getAuth(), authHandler::login))

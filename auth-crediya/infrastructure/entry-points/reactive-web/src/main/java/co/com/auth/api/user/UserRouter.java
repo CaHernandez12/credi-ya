@@ -54,7 +54,8 @@ public class UserRouter {
         return RouterFunctions.route().nest(accept(MediaType.APPLICATION_JSON),
                         builder -> builder
                                 .POST(route.getUser(), userHandler::listenPOSTUseCase)
-                                .GET(route.getSolicited(), userHandler::listenGETExistingId))
+                                .GET(route.getSolicited(), userHandler::listenGETExistingId)
+                                .POST(route.getPaginator(), userHandler::listenGetListEmails))
                 .build();
     }
 }

@@ -1,4 +1,4 @@
-package co.com.auth.api.authentication.security;
+package co.com.auth.commons.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

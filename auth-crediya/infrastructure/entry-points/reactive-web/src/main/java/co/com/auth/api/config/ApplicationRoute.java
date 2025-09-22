@@ -21,4 +21,7 @@ public class ApplicationRoute {
     @NotBlank
     private String auth;
 
+    @NotBlank
+    private String paginator;
+
 }

@@ -31,7 +31,7 @@ public class UserUseCaseTest {
         userGateway = Mockito.mock(UserGateway.class);
         businessConfiguration = Mockito.mock(BusinessConfigurationGateway.class);
         roleGateway = Mockito.mock(RoleGateway.class);
-        userUseCase = new UserUseCase(userGateway, businessConfiguration, roleGateway);
+        //userUseCase = new UserUseCase(userGateway, businessConfiguration, roleGateway);
     }
 
 

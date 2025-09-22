@@ -1,4 +1,4 @@
-package co.com.auth.api.authentication.security;
+package co.com.auth.commons.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .pathMatchers("/api/v1/advisor/**").hasRole("ADVISOR")
 //                        .pathMatchers("/api/v1/users/**").hasRole("USER")
                         .pathMatchers("/api/v1/users/verifyid").permitAll()
+                                .pathMatchers("/api/v1/users/by-emails").permitAll()
                         .anyExchange().authenticated()
                 )
                 .addFilterAt(jwtFilter, SecurityWebFiltersOrder.AUTHENTICATION);

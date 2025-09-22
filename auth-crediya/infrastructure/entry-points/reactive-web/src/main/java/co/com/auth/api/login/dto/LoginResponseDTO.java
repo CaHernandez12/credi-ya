@@ -1,4 +1,4 @@
-package co.com.oncredit.api.credit.dto;
+package co.com.auth.api.login.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class LoginResponseDTO {
 
-    private String documentNumber;
-    private String email;
+    private String token;
+
 }

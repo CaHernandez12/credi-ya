@@ -13,6 +13,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.reactive.TransactionalOperator;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Repository
 @RequiredArgsConstructor
@@ -48,7 +53,7 @@ public class UserAdapter implements UserGateway {
 
     @Override
     public Mono<User> findByEmail(String email) {
-        return repository. findByEmail(email)
+        return repository.findByEmail(email)
                 .map(Mapper::toModel)
                 .onErrorMap(e -> new TechnicalException(e, TechnicalExceptionMessage.DATABASE_ERROR));
     }
@@ -63,5 +68,13 @@ public class UserAdapter implements UserGateway {
                     return Mono.error(new TechnicalException(TechnicalExceptionMessage.USER_NOT_FOUND));
                 }))
                 .map(Mapper::toModel);
+    }
+
+    @Override
+    public Mono<Map<String, User>> findByEmails(List<String> emails) {
+        return repository.findByEmailIn(emails)
+                .collectList()
+                .map(users -> users.stream()
+                        .collect(Collectors.toMap(User::getEmail, Function.identity())));
     }
 }

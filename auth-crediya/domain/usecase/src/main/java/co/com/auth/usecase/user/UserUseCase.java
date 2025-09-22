@@ -1,5 +1,7 @@
 package co.com.auth.usecase.user;
 
+import co.com.auth.model.auth.Login;
+import co.com.auth.model.auth.gateways.LoginGateway;
 import co.com.auth.model.exception.BusinessException;
 import co.com.auth.model.exception.BusinessExceptionMessage;
 import co.com.auth.model.gateway.BusinessConfigurationGateway;
@@ -11,11 +13,14 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 public class UserUseCase implements UserUseCaseService {
 
     private final UserGateway userGateway;
+    private final LoginGateway loginGateway;
     private final BusinessConfigurationGateway businessConfiguration;
     private final RoleGateway roleGateway;
 
@@ -32,14 +37,30 @@ public class UserUseCase implements UserUseCaseService {
     }
 
     @Override
-    public Mono<Boolean> findByDocument(String document) {
-        return userGateway.findByDocument(document)
-                .hasElement();
+    public Mono<String> login(Login login) {
+        return userGateway.findByEmail(login.getEmail())
+                .switchIfEmpty(Mono.error(new BusinessException(BusinessExceptionMessage.INVALID_CREDENTIALS)))
+                .flatMap(user -> loginGateway.findPassword(login.getPassword(), user.getPassword())
+                        .flatMap(valid -> {
+                            if (!valid) {
+                                return Mono.error(new BusinessException(BusinessExceptionMessage.INVALID_CREDENTIALS));
+                            }
+                            return roleGateway.findById(user.getRoleId())
+                                    .switchIfEmpty(Mono.error(new BusinessException(BusinessExceptionMessage.ROLE_NOT_FOUND)))
+                                    .map(role -> loginGateway.generateToken(user.getUserId(), role.getName()));
+                        })
+                );
     }
 
     @Override
-    public Mono<User> findByEmail(String email) {
-        return userGateway.findByEmail(email);
+    public Mono<Map<String, User>> getDataUser(List<String> emails) {
+        return userGateway.findByEmails(emails);
+    }
+
+    @Override
+    public Mono<Boolean> findByDocument(String document) {
+        return userGateway.findByDocument(document)
+                .hasElement();
     }
 
     @Override

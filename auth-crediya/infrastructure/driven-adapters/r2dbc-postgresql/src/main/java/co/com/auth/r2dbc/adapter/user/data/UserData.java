@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 
 
-@Table("tbl_user")
+@Table(value = "tbl_user", schema = "public")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

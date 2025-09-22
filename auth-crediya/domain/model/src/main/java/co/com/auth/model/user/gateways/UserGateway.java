@@ -3,6 +3,9 @@ package co.com.auth.model.user.gateways;
 import co.com.auth.model.user.User;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.Map;
+
 
 public interface UserGateway {
 
@@ -16,5 +19,6 @@ public interface UserGateway {
 
     Mono<User> findById(Long userId);
 
+    Mono<Map<String, User>> findByEmails(List<String> emails);
 
 }

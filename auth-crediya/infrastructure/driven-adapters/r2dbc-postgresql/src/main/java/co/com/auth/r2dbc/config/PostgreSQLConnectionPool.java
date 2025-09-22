@@ -4,6 +4,7 @@ import io.r2dbc.pool.ConnectionPool;
 import io.r2dbc.pool.ConnectionPoolConfiguration;
 import io.r2dbc.postgresql.PostgresqlConnectionConfiguration;
 import io.r2dbc.postgresql.PostgresqlConnectionFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.ReactiveTransactionManager;
@@ -11,6 +12,7 @@ import org.springframework.transaction.reactive.TransactionalOperator;
 
 import java.time.Duration;
 
+@Slf4j
 @Configuration
 public class PostgreSQLConnectionPool {
     /* Change these values for your project */
@@ -28,6 +30,9 @@ public class PostgreSQLConnectionPool {
                 .username(properties.username())
                 .password(properties.password())
                 .build();
+
+        log.info("Creating connection pool");
+        log.info(dbConfiguration.toString());
 
         ConnectionPoolConfiguration poolConfiguration = ConnectionPoolConfiguration.builder()
                 .connectionFactory(new PostgresqlConnectionFactory(dbConfiguration))
